@@ -60,14 +60,12 @@ const Pizzas = [
 
 //a)  Las pizzas que tengan un id impar.
 
-    console.log("Id impares de pizzas: ")
-    for(let i = 0; i < Pizzas.length ; i++){
-        if(i%2===1){
-            console.log("ID: " +Pizzas[i].id);
-            console.log("Nombre: " + Pizzas[i].nombre);
+        console.log("Id impares de pizzas: ")
+        for(let i = 0; i < Pizzas.length ; i++){
+            if(i%2===1){
+                console.log("ID: " + Pizzas[i].id + " - Nombre: " + Pizzas[i].nombre);
+            }
         }
-
-    }
 
 //b) ¿Hay alguna pizza que valga menos de $600?
 
@@ -87,10 +85,10 @@ const Pizzas = [
 //c) El nombre de cada pizza con su respectivo precio.
 
        console.log("\nLista de precios: ")
-       for(let i = 0; i < Pizzas.length; i++){
-        console.log("Nombre: " + Pizzas[i].nombre);
-        console.log("Precio: $" + Pizzas[i].precio);
-       }
+       Pizzas.forEach(({nombre, precio}) => {    
+       console.log('Pizza:',nombre,'. Tiene un costo de:', precio)
+       }) 
+       
 
         
 //d) Todos los ingredientes de cada pizza (En cada iteración imprimir los ingredientes de la pizza actual). 

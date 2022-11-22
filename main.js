@@ -104,3 +104,64 @@ const Pizzas = [
             console.log("------------------------------------");
         }
 
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// EJERCICIO 2
+
+const formulario = document.querySelector(".buscar_pizza");
+const idInput = document.querySelector(".id_pizza");
+const renderNombrePizza = document.querySelector(".renderizar_pizza h2");
+const renderValorPizza = document.querySelector(".renderizar_pizza h3");
+const contenedorError = document.querySelector(".warning");
+const contenedorInfoPizza = document.querySelector(".renderizar_pizza");
+
+
+
+const getNamePizza = (pizzaNombre) => 
+{
+  renderNombrePizza.textContent = `Nombre: ${pizzaNombre}`;
+}
+const getValorPizza = (pizzaValor) => 
+{
+  renderValorPizza.textContent = `Valor: $${pizzaValor}`;
+}
+
+const warning = (id) => 
+{
+  contenedorInfoPizza.style.display = "none";
+
+  if (id.value !== "")
+  {
+    contenedorError.innerHTML = `ID <span>"${id.value}"</span> incorrecto!!!`
+    console.log("ok")
+  }  
+   else 
+  {  
+   contenedorError.textContent = "Valor no valido";
+   console.log("no");
+  }
+}
+
+
+const buscarPorId = () => 
+{
+  const pizzaId=pizza.find((pizza) => pizza.id == idInput.value);
+  if (pizzaId) 
+  {
+    contenedorInfoPizza.style.display = "flex";
+    contenedorError.style.display = "none";
+    getNamePizza(pizzaId.nombre);
+    getValorPizza(pizzaId.precio);
+  } 
+  else 
+  {
+    warning(idInput);
+    contenedorError.style.display="flex";
+  }
+}
+
+formulario.addEventListener("submit", (e) => 
+{
+  e.preventDefault();
+  buscarPorId();
+  formulario.reset();
+});
